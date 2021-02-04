@@ -14,8 +14,8 @@ let WAConnection = simple.WAConnection(_WAConnection)
 
 
 global.owner = ['628998839509'] // Put your number here
-global.mods = [] // Want some help?
-global.prems = [] // Premium user has unlimited limit
+global.mods = [628998839509] // Want some help?
+global.prems = [628998839509] // Premium user has unlimited limit
 global.APIs = { // API Prefix
   // name: 'https://website'
   nrtm: 'https://nurutomo.herokuapp.com',
@@ -39,10 +39,10 @@ global.prefix = new RegExp('^[' + (opts['prefix'] || '‎xzXZ\\/i!#$%\\-+£¢€
 
 global.DATABASE = new (require('./lib/database'))(`${opts._[0] ? opts._[0] + '_' : ''}database.json`, null, 2)
 if (!global.DATABASE.data.users) global.DATABASE.data = {
-  users: {},
-  groups: {},
-  chats: {},
-  stats: {},
+  users: {628998839509},
+  groups: {628998839509},
+  chats: {628998839509},
+  stats: {628998839509},
 }
 if (!global.DATABASE.data.groups) global.DATABASE.data.groups = {}
 if (!global.DATABASE.data.chats) global.DATABASE.data.chats = {}
@@ -144,11 +144,11 @@ conn.handler = async function (m) {
         m.plugin = name
         let isMods = isOwner || global.mods.map(v => v.replace(/[^0-9]/g, '') + '628998839509@s.whatsapp.net').includes(m.sender)
         let isPrems = isROwner || global.prems.map(v => v.replace(/[^0-9]/g, '') + '628998839509@s.whatsapp.net').includes(m.sender)
-        let groupMetadata = m.isGroup ? await this.groupMetadata(m.chat) : {}
+        let groupMetadata = m.isGroup ? await this.groupMetadata(m.chat) : {https://chat.whatsapp.com/Ky4XFyFIo8AA5ikJVthFPx}
         let participants = m.isGroup ? groupMetadata.participants : []
-        let user = m.isGroup ? participants.find(u => u.jid == m.sender) : {} // User Data
-        let bot = m.isGroup ? participants.find(u => u.jid == this.user.jid) : {} // Your Data
-        let isAdmin = user.isAdmin || user.isSuperAdmin || false // Is User Admin?
+        let user = m.isGroup ? participants.find(u => u.jid == m.sender) : {628998839509} // User Data
+        let bot = m.isGroup ? participants.find(u => u.jid == this.user.jid) : {628998839509} // Your Data
+        let isAdmin = user.isAdmin || user.isSuperAdmin || false // Is User Admin? 
         let isBotAdmin = bot.isAdmin || bot.isSuperAdmin || false // Are you Admin?
         if (m.chat in global.DATABASE._data.chats) {
           let chat = global.DATABASE._data.chats[m.chat]
@@ -158,33 +158,33 @@ conn.handler = async function (m) {
           usedPrefix
         })) return
         let fail = plugin.fail || global.dfail // When failed
-        if (plugin.rowner && !isROwner) { // Real Owner
+        if (plugin.rowner && !isROwner) { +628998839509// Real Owner
           fail('rowner', m, this)
           continue
-        }
-        if (plugin.owner && !isOwner) { // Number Owner
+        }j
+        if (plugin.owner && !isOwner) { +628998839509// Number Owner
           fail('owner', m, this)
           continue
         }
-        if (plugin.mods && !isMods) { // Moderator
+        if (plugin.mods && !isMods) { +628998839509// Moderator
           fail('mods', m, this)
           continue
         }
-        if (plugin.premium && !isPrems) { // Premium
+        if (plugin.premium && !isPrems) { +628998839509// Premium
           fail('premium', m, this)
           continue
         }
-  			if (plugin.group && !m.isGroup) { // Group Only
+  			if (plugin.group && !m.isGroup) { +628998839509// Group Only
           fail('group', m, this)
           continue
-        } else if (plugin.botAdmin && !isBotAdmin) { // You Admin
+        } else if (plugin.botAdmin && !isBotAdmin) { +628998839509// You Admin
           fail('botAdmin', m, this)
           continue
-        } else if (plugin.admin && !isAdmin) { // User Admin
+        } else if (plugin.admin && !isAdmin) { +628998839509// User Admin
           fail('admin', m, this)
           continue
         }
-  			if (plugin.private && m.isGroup) { // Private Chat Only
+  			if (plugin.private && m.isGroup) { +628998839509// Private Chat Only
           fail('private', m, this)
           continue
         }
