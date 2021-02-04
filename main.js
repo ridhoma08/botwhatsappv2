@@ -13,7 +13,7 @@ let util = require('util')
 let WAConnection = simple.WAConnection(_WAConnection)
 
 
-global.owner = ['6281515860089'] // Put your number here
+global.owner = ['628998839509'] // Put your number here
 global.mods = [] // Want some help?
 global.prems = [] // Premium user has unlimited limit
 global.APIs = { // API Prefix
@@ -83,11 +83,11 @@ conn.handler = async function (m) {
       let user
       if (user = global.DATABASE._data.users[m.sender]) {
         if (!isNumber(user.exp)) user.exp = 0
-        if (!isNumber(user.limit)) user.limit = 10
+        if (!isNumber(user.limit)) user.limit = 9999
         if (!isNumber(user.lastclaim)) user.lastclaim = 0
       } else global.DATABASE._data.users[m.sender] = {
         exp: 0,
-        limit: 10,
+        limit: 9999,
         lastclaim: 0,
       }
       
@@ -126,7 +126,7 @@ conn.handler = async function (m) {
         let _args = noPrefix.trim().split` `.slice(1)
         let text = _args.join` `
   		  command = (command || '').toLowerCase()
-        let isROwner = [global.conn.user.jid, ...global.owner].map(v => v.replace(/[^0-9]/g, '') + '@s.whatsapp.net').includes(m.sender)
+        let isROwner = [global.conn.user.jid, ...global.owner].map(v => v.replace(/[^0-9]/g, '') + '628998839509@s.whatsapp.net').includes(m.sender)
         let isOwner = isROwner || m.fromMe
 
   			let isAccept = plugin.command instanceof RegExp ? // RegExp Mode?
@@ -142,8 +142,8 @@ conn.handler = async function (m) {
 
   			if (!isAccept) continue
         m.plugin = name
-        let isMods = isOwner || global.mods.map(v => v.replace(/[^0-9]/g, '') + '@s.whatsapp.net').includes(m.sender)
-        let isPrems = isROwner || global.prems.map(v => v.replace(/[^0-9]/g, '') + '@s.whatsapp.net').includes(m.sender)
+        let isMods = isOwner || global.mods.map(v => v.replace(/[^0-9]/g, '') + '628998839509@s.whatsapp.net').includes(m.sender)
+        let isPrems = isROwner || global.prems.map(v => v.replace(/[^0-9]/g, '') + '628998839509@s.whatsapp.net').includes(m.sender)
         let groupMetadata = m.isGroup ? await this.groupMetadata(m.chat) : {}
         let participants = m.isGroup ? groupMetadata.participants : []
         let user = m.isGroup ? participants.find(u => u.jid == m.sender) : {} // User Data
